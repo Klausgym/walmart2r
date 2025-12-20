@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Walmart Christmas Discount — $750</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --wm-blue:#0071CE;
+      --wm-blue-dark:#005CAB;
+      --wm-yellow:#FFC220;
+
+      --bg:#ffffff;
+      --surface:#f7f9fc;
+      --border:#e6eaf2;
+      --text:#0f172a;
+      --muted:#64748b;
+      --good:#16a34a;
+      --warn:#f59e0b;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      line-height:1.45;
+    }
+
+    .wrap{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      padding:28px 16px 96px; /* space for mobile sticky */
+    }
+
+    .container{
+      width:100%;
+      max-width:980px;
+    }
+
+    /* Top bar */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:var(--surface);
+      border:1px solid var(--border);
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:50%;
+      background:var(--wm-blue);
+      box-shadow:0 0 0 4px rgba(0,113,206,.14);
+    }
+    .spark{
+      width:10px;height:10px;border-radius:50%;
+      background:var(--wm-yellow);
+      box-shadow:0 0 0 4px rgba(255,194,32,.18);
+    }
+
+    /* Layout */
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:22px;
+      align-items:start;
+    }
+
+    /* Left: copy */
+    .hero{
+      background:linear-gradient(180deg, rgba(0,113,206,.06), rgba(255,255,255,0));
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:18px;
+    }
+    .kicker{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      margin-bottom:10px;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(0,113,206,.25);
+      background:rgba(0,113,206,.06);
+      color:#0b3b73;
+      font-size:12px;
+      font-weight:700;
+    }
+    .tag b{ color:var(--wm-blue); }
+
+    h1{
+      margin:0 0 10px;
+      font-size:34px;
+      line-height:1.08;
+      letter-spacing:-.02em;
+    }
+    h1 span{ color:var(--wm-blue); }
+
+    .sub{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:14px;
+      max-width:60ch;
+    }
+
+    .benefits{
+      list-style:none;
+      padding:0;
+      margin:14px 0 0;
+      display:grid;
+      gap:10px;
+    }
+    .benefits li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:12px;
+    }
+    .check{
+      width:18px;height:18px;border-radius:50%;
+      border:2px solid var(--good);
+      display:flex;align-items:center;justify-content:center;
+      color:var(--good);
+      font-size:11px;
+      margin-top:1px;
+      flex:0 0 auto;
+    }
+    .b-title{ font-weight:700; font-size:14px; }
+    .b-desc{ color:var(--muted); font-size:12px; margin-top:2px; }
+
+    /* Sections */
+    .section{
+      margin-top:18px;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:16px;
+    }
+    .section h2{
+      margin:0 0 10px;
+      font-size:16px;
+      letter-spacing:-.01em;
+    }
+    .steps{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:grid;
+      gap:10px;
+    }
+    .step{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:12px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:var(--surface);
+    }
+    .num{
+      width:22px;height:22px;border-radius:999px;
+      background:#fff;
+      border:1px solid var(--border);
+      display:flex;align-items:center;justify-content:center;
+      font-size:12px;
+      color:var(--muted);
+      flex:0 0 auto;
+      margin-top:1px;
+    }
+    .step b{ font-size:13px; }
+    .step p{
+      margin:2px 0 0;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .faq{
+      display:grid;
+      gap:10px;
+    }
+    .qa{
+      padding:12px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:#fff;
+    }
+    .q{
+      font-weight:700;
+      font-size:13px;
+      margin:0 0 4px;
+    }
+    .a{
+      margin:0;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    /* Right: card + CTA */
+    .side{
+      position:sticky;
+      top:18px;
+    }
+
+    .cardbox{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:16px;
+    }
+
+    .giftwrap{
+      position:relative;
+      max-width:420px;
+      margin:0 auto;
+    }
+    .giftwrap img{
+      width:100%;
+      height:auto;
+      border-radius:16px;
+      display:block;
+      box-shadow:0 14px 28px rgba(2,6,23,.10);
+    }
+    .value{
+      position:absolute;
+      top:10px;
+      left:12px;
+      color:#fff;
+      font-size:24px;
+      font-weight:800;
+      text-shadow:0 2px 6px rgba(0,0,0,.45);
+      padding:0;
+      background:none;
+    }
+    .value sup{
+      font-size:13px;
+      position:relative;
+      top:-0.45em;
+    }
+
+    .timer{
+      margin-top:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      background:var(--surface);
+      border:1px solid var(--border);
+      font-size:13px;
+      color:var(--muted);
+    }
+    .timer .t-dot{
+      width:8px;height:8px;border-radius:50%;
+      background:var(--warn);
+      box-shadow:0 0 0 4px rgba(245,158,11,.16);
+    }
+    .timer strong{
+      color:var(--text);
+      font-variant-numeric:tabular-nums;
+    }
+
+    .cta{
+      margin-top:12px;
+      width:100%;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 18px;
+      border-radius:999px;
+      background:var(--wm-blue);
+      color:#fff;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      font-size:14px;
+      text-decoration:none;
+      border:0;
+      box-shadow:0 14px 28px rgba(0,113,206,.22);
+      transition:transform .08s ease, background .15s ease, box-shadow .15s ease;
+    }
+    .cta:hover{
+      background:var(--wm-blue-dark);
+      box-shadow:0 18px 34px rgba(0,113,206,.26);
+    }
+    .cta:active{ transform:translateY(1px); }
+
+    .micro{
+      margin-top:10px;
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.4;
+      text-align:left;
+    }
+    .micro b{ color:var(--text); }
+
+    .badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:10px;
+    }
+    .badge{
+      font-size:11px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:var(--surface);
+      border:1px solid var(--border);
+      color:var(--muted);
+    }
+    .badge.highlight{
+      border-color:rgba(255,194,32,.45);
+      background:rgba(255,194,32,.10);
+      color:#7a5200;
+      font-weight:700;
+    }
+
+    /* Mobile sticky CTA */
+    .sticky{
+      position:fixed;
+      left:0; right:0; bottom:0;
+      background:rgba(255,255,255,.92);
+      border-top:1px solid var(--border);
+      backdrop-filter:blur(10px);
+      padding:10px 12px;
+      display:none;
+      z-index:50;
+    }
+    .sticky .row{
+      max-width:980px;
+      margin:0 auto;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .mini{
+      flex:1;
+      text-align:left;
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.2;
+    }
+    .mini strong{ color:var(--text); }
+    .sticky .cta{
+      margin:0;
+      width:auto;
+      padding:12px 16px;
+      font-size:13px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .grid{ grid-template-columns:1fr; }
+      .side{ position:static; }
+      .sticky{ display:block; }
+      h1{ font-size:30px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="container">
+
+      <div class="topbar">
+        <div class="pill"><span class="dot"></span> Walmart Christmas Discount</div>
+        <div class="pill"><span class="spark"></span> Limited-time holiday window</div>
+      </div>
+
+      <div class="grid">
+        <!-- LEFT -->
+        <div>
+          <div class="hero">
+            <div class="kicker">
+              <div class="tag">Holiday savings: <b>$750</b> Walmart Discount</div>
+              <div class="pill"><span class="dot"></span> Fast-start • simple steps</div>
+            </div>
+
+            <h1>Claim your <span>$750 Walmart Christmas Discount</span> in a few easy steps.</h1>
+            <p class="sub">
+              A limited-time holiday promotion designed to increase your savings. Start now, follow the steps,
+              and complete all required actions shown in the offer flow.
+            </p>
+
+            <ul class="benefits">
+              <li>
+                <div class="check">✓</div>
+                <div>
+                  <div class="b-title">Instant access to the discount flow</div>
+                  <div class="b-desc">Tap “Claim Now” to view eligibility and required steps.</div>
+                </div>
+              </li>
+              <li>
+                <div class="check">✓</div>
+                <div>
+                  <div class="b-title">Quick completion</div>
+                  <div class="b-desc">Most steps take about 10–20 minutes each (varies by offer).</div>
+                </div>
+              </li>
+              <li>
+                <div class="check">✓</div>
+                <div>
+                  <div class="b-title">Email verification</div>
+                  <div class="b-desc">Use a valid email for updates and confirmation.</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <h2>Quick Start Guide</h2>
+            <ol class="steps">
+              <li class="step">
+                <div class="num">1</div>
+                <div>
+                  <b>Click “Claim Now”</b>
+                  <p>Open the promotion flow and review eligibility.</p>
+                </div>
+              </li>
+              <li class="step">
+                <div class="num">2</div>
+                <div>
+                  <b>Enter your email & basic info</b>
+                  <p>Make sure your details are accurate for verification updates.</p>
+                </div>
+              </li>
+              <li class="step">
+                <div class="num">3</div>
+                <div>
+                  <b>Complete ALL recommended deals</b>
+                  <p>All required actions shown in the offer flow must be completed.</p>
+                </div>
+              </li>
+              <li class="step">
+                <div class="num">4</div>
+                <div>
+                  <b>Receive your $750 Walmart Christmas Discount</b>
+                  <p>Processing typically occurs within 24–48 hours after verification.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div class="section">
+            <h2>Common Questions</h2>
+            <div class="faq">
+              <div class="qa">
+                <p class="q">How long do the deals take?</p>
+                <p class="a">Quick 10–20 minute completion time per deal (varies by offer).</p>
+              </div>
+              <div class="qa">
+                <p class="q">When do I get my discount?</p>
+                <p class="a">Processing is typically within 24–48 hours after all required deals are completed and verified.</p>
+              </div>
+              <div class="qa">
+                <p class="q">Do I need to be 18+?</p>
+                <p class="a">Yes, you must be 18 years or older to participate.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <aside class="side">
+          <div class="cardbox">
+            <div class="giftwrap">
+              <div class="value"><sup>$</sup>750</div>
+              <img
+                src="https://www.mygiftcardsupply.com/wp-content/uploads/2022/01/Walmart-gift-card-online.png"
+                alt="Walmart gift card"
+              >
+            </div>
+
+            <div class="timer" aria-label="Countdown timer">
+              <span class="t-dot"></span>
+              <span>Offer window:</span>
+              <strong id="timer">30:00</strong>
+            </div>
+
+            <a class="cta"
+               href="https://glctrk.org/aff_c?offer_id=3449&aff_id=122650&source=walmart2r"
+               target="_blank"
+               rel="nofollow noopener">
+              Claim Now
+            </a>
+
+            <div class="micro">
+              <b>Required:</b> valid email • complete all required deals • 18+<br>
+              <span style="color:var(--muted);">Tip: use your primary email for faster verification updates.</span>
+            </div>
+
+            <div class="badges">
+              <div class="badge highlight">Christmas promo</div>
+              <div class="badge">Fast-start steps</div>
+              <div class="badge">Mobile friendly</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile sticky CTA -->
+  <div class="sticky" role="region" aria-label="Sticky call to action">
+    <div class="row">
+      <div class="mini">
+        <strong>Walmart Christmas Discount</strong><br>
+        $750 offer window: <strong id="timer2">30:00</strong>
+      </div>
+      <a class="cta"
+         href="https://glctrk.org/aff_c?offer_id=3449&aff_id=122650&source=walmart2r"
+         target="_blank"
+         rel="nofollow noopener">
+        Claim
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Countdown timer 30:00 -> 00:00
+    (function(){
+      const el1 = document.getElementById('timer');
+      const el2 = document.getElementById('timer2');
+      let remaining = 30 * 60;
+
+      function render(){
+        const m = Math.floor(remaining / 60);
+        const s = remaining % 60;
+        const t = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+        el1.textContent = t;
+        if (el2) el2.textContent = t;
+      }
+
+      render();
+      setInterval(() => {
+        if (remaining > 0) remaining--;
+        render();
+      }, 1000);
+    })();
+  </script>
+</body>
+</html>
